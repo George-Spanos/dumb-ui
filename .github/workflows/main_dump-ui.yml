@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: ${{ secrets.AzureAppService_ContainerUsername_7beb6f4cffc34012b82b172ecf0546ee }}/dumb-ui:${{ github.sha }}
+        tags: ${{ secrets.AzureAppService_ContainerUsername_7beb6f4cffc34012b82b172ecf0546ee }}/dumb-ui:${{ github.sha }},${{ secrets.AzureAppService_ContainerUsername_7beb6f4cffc34012b82b172ecf0546ee }}/dumb-ui:latest
         file: ./Dockerfile
 
   deploy:
@@ -48,4 +48,4 @@ jobs:
         app-name: 'dump-ui'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_c6b74ceb034e498c92023d286b7535fa }}
-        images: '${{ secrets.AzureAppService_ContainerUsername_7beb6f4cffc34012b82b172ecf0546ee }}/dumb-ui:${{ github.sha }}'
+        images: '${{ secrets.AzureAppService_ContainerUsername_7beb6f4cffc34012b82b172ecf0546ee }}/dumb-ui:latest'
